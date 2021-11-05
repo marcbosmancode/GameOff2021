@@ -14,6 +14,10 @@ config/name="GameOff2021"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://globals.gd"
+
 [display]
 
 window/size/width=512
@@ -44,6 +48,20 @@ texture={
 "stream": false,
 "svg/scale": 1.0
 }
+
+[input]
+
+swing={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":70,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Bugs"
 
 [physics]
 

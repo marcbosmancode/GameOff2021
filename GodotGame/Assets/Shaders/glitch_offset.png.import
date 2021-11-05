@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/glitch_offset.png-f2df2b329347175232d2318dc70fa079.stex"
+path="res://.import/glitch_offset.png-ca7bd8b854007628ffad17eaf2453a8c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Shaders/glitch_offset.png"
-dest_files=[ "res://.import/glitch_offset.png-f2df2b329347175232d2318dc70fa079.stex" ]
+source_file="res://Assets/Shaders/glitch_offset.png"
+dest_files=[ "res://.import/glitch_offset.png-ca7bd8b854007628ffad17eaf2453a8c.stex" ]
 
 [params]
 
