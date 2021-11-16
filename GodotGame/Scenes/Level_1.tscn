@@ -1,12 +1,10 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Assets/Bugs/Spider.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/TitleScreen/logo.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Tilesets/tileset.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assets/Player/PlayerCamera.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Assets/Shaders/GlitchEffect.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Assets/UI/tutorial_arrow.png" type="Texture" id=8]
 [ext_resource path="res://Assets/UI/tutorial_swing_key.png" type="Texture" id=9]
 [ext_resource path="res://Assets/UI/tutorial_arrow_jump.png" type="Texture" id=10]
@@ -270,20 +268,6 @@ position = Vector2( -96, 0 )
 [node name="BottomRight" parent="Player/PlayerCamera/MovementBox" index="1"]
 position = Vector2( 800, 360 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="LogoSprite" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 88, 59 )
-texture = ExtResource( 3 )
-
-[node name="GlitchEffect" parent="CanvasLayer" instance=ExtResource( 7 )]
-
-[node name="GlitchRegion" parent="CanvasLayer/GlitchEffect" index="0"]
-margin_left = 3.0
-margin_top = 1.0
-margin_right = 173.0
-margin_bottom = 111.0
-
 [node name="tutorial_arrow" type="Sprite" parent="."]
 position = Vector2( 18, 288 )
 texture = ExtResource( 8 )
@@ -303,4 +287,3 @@ corresponding_key = "swing"
 
 [editable path="Player"]
 [editable path="Player/PlayerCamera"]
-[editable path="CanvasLayer/GlitchEffect"]
