@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Fonts/BugCatcherFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/UI/indicator.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/chatbox.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/DialogueSystem.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Assets/Fonts/Bug Catcher Font.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+extra_spacing_top = 1
+font_data = SubResource( 3 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "Bounce"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 157, 79 ), Vector2( 157, 76 ), Vector2( 157, 79 ) ]
+}
+
+[node name="DialogueSystem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -457.0
+margin_bottom = -261.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ControlsIndication" type="Label" parent="."]
+visible = false
+margin_top = 96.0
+margin_right = 187.0
+margin_bottom = 110.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.141176, 0.141176, 0.141176, 1 )
+text = "(left-click or press space)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="chatbox" type="Sprite" parent="."]
+position = Vector2( 88, 58 )
+texture = ExtResource( 3 )
+
+[node name="Text" type="Label" parent="."]
+margin_left = 18.0
+margin_top = 17.0
+margin_right = 163.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.180392, 0.180392, 0.180392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="indicator" type="Sprite" parent="."]
+position = Vector2( 157, 76.9999 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="indicator"]
+autoplay = "Bounce"
+anims/Bounce = SubResource( 1 )
+
+[node name="TextDelayTimer" type="Timer" parent="."]
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="TextDelayTimer" to="." method="_on_TextDelayTimer_timeout"]

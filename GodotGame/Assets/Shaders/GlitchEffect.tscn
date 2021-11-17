@@ -5,8 +5,8 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/dispAmt = 0.00257143
-shader_param/abberationAmt = 0.00257143
+shader_param/dispAmt = 0.0
+shader_param/abberationAmt = 0.0
 shader_param/displace = ExtResource( 1 )
 
 [sub_resource type="Animation" id=2]
