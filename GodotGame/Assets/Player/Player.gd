@@ -57,8 +57,12 @@ func state_move(delta):
 	motion.y += GRAVITY * delta
 	
 	if Input.is_action_just_pressed("ui_up"):
-		if jump_allowed:
-			motion.y = -JUMP_FORCE
+		if Globals.jump_bugged == true:
+			if jump_allowed == false:
+				motion.y = -JUMP_FORCE
+		else:
+			if jump_allowed:
+				motion.y = -JUMP_FORCE
 	
 	if touching_ground:
 		if x_input == 0:
@@ -77,7 +81,7 @@ func state_move(delta):
 	motion = move_and_slide(motion, Vector2.UP)
 	
 	if Input.is_action_just_pressed("swing"):
-		if Globals.bugged:
+		if Globals.swing_bugged:
 			state = BUGGED_SWING
 		else:
 			state = SWING

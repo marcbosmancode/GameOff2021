@@ -1,7 +1,7 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Assets/Backgrounds/ParallaxBackground.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/Shaders/GlitchEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Shaders/glitch_offset.png" type="Texture" id=2]
 [ext_resource path="res://Assets/TitleScreen/logo.png" type="Texture" id=3]
 [ext_resource path="res://Assets/TitleScreen/start_button.png" type="Texture" id=4]
 [ext_resource path="res://Assets/TitleScreen/exit_button.png" type="Texture" id=5]
@@ -12,36 +12,72 @@
 [ext_resource path="res://Assets/Fonts/BugCatcherFont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Assets/TitleScreen/StartButton.gd" type="Script" id=11]
 [ext_resource path="res://Assets/TitleScreen/ExitButton.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Shaders/glitch_effect.gdshader" type="Shader" id=13]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 13 )
+shader_param/apply = true
+shader_param/amount = 0.0
+shader_param/offset_texture = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "animate"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4.0, -3.0, 6.0, -4.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 1 ), Vector2( 0, -0.75 ), Vector2( 0, 1.5 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=4]
+[sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=9]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
-[sub_resource type="StyleBoxEmpty" id=8]
+[sub_resource type="StyleBoxEmpty" id=10]
 
-[sub_resource type="StyleBoxEmpty" id=9]
+[sub_resource type="StyleBoxEmpty" id=11]
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 150, 40 )
 
@@ -52,27 +88,24 @@ offset = Vector2( 0, -250 )
 transform = Transform2D( 1, 0, 0, 1, 0, -250 )
 
 [node name="logo" type="Sprite" parent="."]
+material = SubResource( 1 )
 position = Vector2( 318, 81 )
 texture = ExtResource( 3 )
 
-[node name="GlitchEffect" parent="." instance=ExtResource( 2 )]
-
-[node name="GlitchRegion" parent="GlitchEffect" index="0"]
-margin_left = 232.0
-margin_top = 23.0
-margin_right = 401.0
-margin_bottom = 137.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="logo"]
+autoplay = "animate"
+anims/animate = SubResource( 2 )
 
 [node name="StartButton" type="Button" parent="."]
 margin_left = 237.0
 margin_top = 164.0
 margin_right = 389.0
 margin_bottom = 204.0
-custom_styles/hover = SubResource( 1 )
-custom_styles/pressed = SubResource( 2 )
-custom_styles/focus = SubResource( 3 )
-custom_styles/disabled = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
 script = ExtResource( 11 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -83,11 +116,11 @@ margin_left = 237.0
 margin_top = 217.0
 margin_right = 389.0
 margin_bottom = 257.0
-custom_styles/hover = SubResource( 6 )
-custom_styles/pressed = SubResource( 7 )
-custom_styles/focus = SubResource( 8 )
-custom_styles/disabled = SubResource( 9 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -107,5 +140,3 @@ __meta__ = {
 
 [connection signal="pressed" from="StartButton" to="StartButton" method="_on_StartButton_pressed"]
 [connection signal="pressed" from="ExitButton" to="ExitButton" method="_on_ExitButton_pressed"]
-
-[editable path="GlitchEffect"]

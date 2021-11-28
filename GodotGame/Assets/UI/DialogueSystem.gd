@@ -11,20 +11,13 @@ var current_phrase = 0
 var text_finished = false
 var text = "" setget set_text
 
-var dialogue = ["hello!\nare you here to help\ntest my game?",
-	"there are still a\nlot of bugs...\nlook over there!",
-	"think you can catch\nit for me?"] setget set_dialogue
-	
-var dialogue2 = ["oh? you can't reach\nup there?",
-	"hmmmmm....\nlet me think.",
-	"try using the f key\nit makes you swing\nyour net.",
-	"i remember the swing\nstate being bugged."]
+var dialogue = [""] setget set_dialogue
 
 func _ready():
 	if Globals.showDialogueControls == true:
 		$ControlsIndication.show()
 	text_delay_timer.start(TEXT_SPEED)
-	set_text(dialogue[0])
+	modulate.a = 0
 
 func _input(event):
 	if Input.is_action_just_pressed("dialogue_skip"):
@@ -61,6 +54,7 @@ func set_text(new_text):
 	text_delay_timer.start(TEXT_SPEED)
 
 func set_dialogue(new_dialogue):
+	show()
 	dialogue = new_dialogue
 	current_phrase = 0
 	visible_characters = 0
@@ -74,3 +68,4 @@ func set_dialogue(new_dialogue):
 
 func _on_TextDelayTimer_timeout():
 	visible_characters += 1
+

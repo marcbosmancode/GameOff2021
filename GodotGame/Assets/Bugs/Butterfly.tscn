@@ -1,18 +1,17 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Assets/Bugs/spider.png" type="Texture" id=1]
-[ext_resource path="res://Assets/Bugs/Spider.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Shaders/glitch_offset.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Bugs/butterfly.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Shaders/glitch_offset.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Bugs/Butterfly.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Shaders/glitch_effect.gdshader" type="Shader" id=4]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 4 )
 shader_param/apply = true
 shader_param/amount = 0.0
-shader_param/offset_texture = ExtResource( 3 )
+shader_param/offset_texture = ExtResource( 2 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "Boing"
+[sub_resource type="Animation" id=2]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -37,7 +36,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0.0, 4.0, -2.0, -6.0, 4.0, 0.0 ]
+"values": [ 0.0, 4.0, -4.0, 2.0, -6.0, 0.0 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath(".:position")
@@ -49,30 +48,30 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7, 0.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 0, -26 ), Vector2( 0, -25 ), Vector2( 0, -26.5 ), Vector2( 0, -27.5 ), Vector2( 0, -25 ), Vector2( 0, -26 ) ]
+"values": [ Vector2( 0, -11 ), Vector2( 0, -10 ), Vector2( 0, -12 ), Vector2( 0, -10.5 ), Vector2( 0, -12.5 ), Vector2( 0, -11 ) ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 7, 8 )
 
-[node name="Spider" type="Area2D"]
+[node name="Butterfly" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
-[node name="SpiderSprite" type="Sprite" parent="."]
-material = SubResource( 4 )
-position = Vector2( 0, -26 )
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+position = Vector2( 0, -11 )
 texture = ExtResource( 1 )
 hframes = 4
 frame = 3
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SpiderSprite"]
-autoplay = "Boing"
-anims/Boing = SubResource( 1 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "animate"
+anims/animate = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2( 0, -17 )
-shape = SubResource( 2 )
+position = Vector2( 0, -13 )
+shape = SubResource( 3 )
 
-[connection signal="area_entered" from="." to="." method="_on_Spider_area_entered"]
+[connection signal="area_entered" from="." to="." method="_on_Butterfly_area_entered"]

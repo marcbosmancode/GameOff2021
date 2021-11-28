@@ -3,6 +3,7 @@
 [ext_resource path="res://Assets/Player/PlayerCamera.gd" type="Script" id=1]
 
 [node name="PlayerCamera" type="Camera2D"]
+current = true
 smoothing_enabled = true
 smoothing_speed = 2.0
 script = ExtResource( 1 )
