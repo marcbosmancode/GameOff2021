@@ -98,9 +98,9 @@ anims/animate = SubResource( 2 )
 
 [node name="StartButton" type="Button" parent="."]
 margin_left = 237.0
-margin_top = 164.0
+margin_top = 178.0
 margin_right = 389.0
-margin_bottom = 204.0
+margin_bottom = 218.0
 custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/focus = SubResource( 5 )
@@ -112,6 +112,7 @@ __meta__ = {
 }
 
 [node name="ExitButton" type="Button" parent="."]
+visible = false
 margin_left = 237.0
 margin_top = 217.0
 margin_right = 389.0

@@ -5,7 +5,7 @@ export var MAX_SPEED = 100
 export var FRICTION = 10
 export var AIR_RESISTANCE = 1
 export var GRAVITY = 500
-export var JUMP_FORCE = 220
+export var JUMP_FORCE = 260
 
 var motion = Vector2.ZERO
 
