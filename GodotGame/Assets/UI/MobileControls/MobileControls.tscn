@@ -1,0 +1,46 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_jump.png" type="Texture" id=1]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_swing.png" type="Texture" id=2]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_left.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_right.png" type="Texture" id=4]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_talk.png" type="Texture" id=5]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_pressed_left.png" type="Texture" id=6]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_pressed_swing.png" type="Texture" id=7]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_pressed_jump.png" type="Texture" id=8]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_pressed_right.png" type="Texture" id=9]
+[ext_resource path="res://Assets/UI/MobileControls/mobile_controls_pressed_talk.png" type="Texture" id=10]
+
+[node name="MobileControls" type="CanvasLayer"]
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2( 25, 248 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 6 )
+passby_press = true
+action = "ui_left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2( 89, 249 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 9 )
+passby_press = true
+action = "ui_right"
+
+[node name="Jump" type="TouchScreenButton" parent="."]
+position = Vector2( 564, 223 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 8 )
+action = "ui_up"
+
+[node name="Swing" type="TouchScreenButton" parent="."]
+position = Vector2( 498, 189 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 7 )
+action = "swing"
+
+[node name="Talk" type="TouchScreenButton" parent="."]
+position = Vector2( 498, 256 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 10 )
+action = "dialogue_skip"
